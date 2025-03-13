@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deportes Florian - Confección y venta de productos deportivos de calidad">
+    <meta name="author" content="Tu Nombre">
+    <title>Deportes Florian - Productos Deportivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #003087, #d32f2f);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551970634-7e8d41a743e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover, url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            background-blend-mode: overlay;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            animation: slideBackground 10s infinite alternate;
+        }
+
+        @keyframes slideBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #ffeb3b;
+            color: #003087;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #fdd835;
+            transform: translateY(-3px);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 0;
+            background: #fff;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #003087;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .product-card p {
+            padding: 0 1rem 1.5rem;
+            text-align: center;
+            color: #666;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: #f9f9f9;
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Video Section */
+        .video {
+            padding: 6rem 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .video h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .video iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: #f9f9f9;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #003087;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #ffeb3b;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            background: #ffeb3b;
+            color: #003087;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-submit-btn:hover {
+            background: #fdd835;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #003087, #d32f2f);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content a {
+            color: #ffeb3b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: white;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #003087;
+                padding: 2rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .video iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Deportes Florian</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <!-- CAMBIA EL NÚMERO DE WHATSAPP AQUÍ -->
+                    <li><a href="https://wa.me/5491112345678?text=Hola,%20quiero%20consultar%20sobre%20uniformes%20deportivos" target="_blank">WhatsApp</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Deportes Florian</h1>
+            <p>Tu aliado en productos deportivos: uniformes, balones y más para ganar en la cancha.</p>
+            <a href="#productos" class="cta-btn">Explora Ahora</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="productos">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <!-- CAMBIA ESTA IMAGEN POR UNA REAL -->
+                    <img src="https://images.unsplash.com/photo-1582293458390-5e3859b7c2c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=280&q=80" alt="Uniforme Fútbol">
+                    <h3>Uniformes de Fútbol</h3>
+                    <p>Diseños personalizados para tu equipo, resistentes y cómodos.</p>
+                </div>
+                <div class="product-card">
+                    <!-- CAMBIA ESTA IMAGEN POR UNA REAL -->
+                    <img src="https://images.unsplash.com/photo-1608889335949-32f58da2f7d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=280&q=80" alt="Balón Fútbol">
+                    <h3>Balones de Fútbol</h3>
+                    <p>Alta calidad para entrenamientos y partidos intensos.</p>
+                </div>
+                <div class="product-card">
+                    <!-- CAMBIA ESTA IMAGEN POR UNA REAL -->
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=280&q=80" alt="Zapatillas Deportivas">
+                    <h3>Zapatillas Deportivas</h3>
+                    <p>Rendimiento y estilo para tus actividades deportivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <h2>Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- EDITA ESTE TEXTO CON LA HISTORIA DE TU HERMANO -->
+                    <p>En Deportes Florian, vivimos el deporte. Nos especializamos en la confección de uniformes y productos deportivos que potencian tu rendimiento y reflejan tu pasión.</p>
+                    <p>Con dedicación y experiencia, equipamos a equipos y deportistas para que brillen en cada juego.</p>
+                </div>
+                <div class="about-img">
+                    <!-- CAMBIA ESTA IMAGEN POR UNA REAL -->
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Equipo Deportes Florian">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video" id="video">
+        <div class="container">
+            <h2>Nuestra Pasión en Acción</h2>
+            <!-- CAMBIA ESTE VIDEO POR UNO PROPIO SI TIENE -->
+            <iframe src="https://www.youtube.com/embed/8tPnX7isUQY" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <form class="contact-form" action="https://formspree.io/f/{TU_ID_AQUI}" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono (Opcional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+54 9 11 1234 5678">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" placeholder="Ej: Quiero un uniforme para mi equipo" required></textarea>
+                </div>
+                <button type="submit" class="form-submit-btn">Enviar Consulta</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>Deportes Florian</h3>
+                <p>© 2025 Deportes Florian. Todos los derechos reservados.</p>
+            </div>
+            <div>
+                <h3>Enlaces</h3>
+                <p><a href="#inicio">Inicio</a></p>
+                <p><a href="#productos">Productos</a></p>
+                <p><a href="#nosotros">Nosotros</a></p>
+                <p><a href="#video">Video</a></p>
+                <p><a href="#contacto">Contacto</a></p>
+            </div>
+            <div>
+                <h3>Contacto</h3>
+                <!-- CAMBIA EL EMAIL Y NÚMERO AQUÍ -->
+                <p>Email: <a href="mailto:info@deportesflorian.com">info@deportesflorian.com</a></p>
+                <p>Tel: <a href="tel:+5491112345678">+54 9 11 1234 5678</a></p>
+                <p>WhatsApp: <a href="https://wa.me/5491112345678?text=Hola,%20quiero%20consultar%20sobre%20uniformes%20deportivos" target="_blank">+54 9 11 1234 5678</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <!-- CAMBIA EL NÚMERO DE WHATSAPP AQUÍ -->
+    <a href="https://wa.me/5491112345678?text=Hola,%20quiero%20consultar%20sobre%20uniformes%20deportivos" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript para navegación -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
